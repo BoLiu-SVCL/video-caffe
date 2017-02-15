@@ -311,7 +311,7 @@ message ParamSpec {
 //
 // LayerParameter next available layer-specific ID: 147 (last added: recurrent_param)
 // video-caffe custom layers start with 7777
-// Next available video-caffe layer ID: 7779 (last added: duplicate_param)
+// Next available video-caffe layer ID: 7780 (last added: permute_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -392,6 +392,7 @@ message LayerParameter {
   optional MemoryDataParameter memory_data_param = 119;
   optional MVNParameter mvn_param = 120;
   optional ParameterParameter parameter_param = 145;
+	optional PermuteParameter permute_param = 7779;
   optional PoolingParameter pooling_param = 121;
   optional PowerParameter power_param = 122;
   optional PReLUParameter prelu_param = 131;
@@ -898,6 +899,10 @@ message MVNParameter {
 
 message ParameterParameter {
   optional BlobShape shape = 1;
+}
+
+message PermuteParameter {
+	repeated uint32 order = 1;
 }
 
 message PoolingParameter {
