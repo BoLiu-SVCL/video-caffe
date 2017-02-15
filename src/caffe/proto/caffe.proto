@@ -311,7 +311,7 @@ message ParamSpec {
 //
 // LayerParameter next available layer-specific ID: 147 (last added: recurrent_param)
 // video-caffe custom layers start with 7777
-// Next available video-caffe layer ID: 7778 (last added: video_data_layer)
+// Next available video-caffe layer ID: 7779 (last added: duplicate_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -374,6 +374,7 @@ message LayerParameter {
   optional DataParameter data_param = 107;
   optional DropoutParameter dropout_param = 108;
   optional DummyDataParameter dummy_data_param = 109;
+	optional DuplicateParameter duplicate_param = 7778;
   optional EltwiseParameter eltwise_param = 110;
   optional ELUParameter elu_param = 140;
   optional EmbedParameter embed_param = 137;
@@ -693,6 +694,11 @@ message DummyDataParameter {
   repeated uint32 channels = 3;
   repeated uint32 height = 4;
   repeated uint32 width = 5;
+}
+
+// For TemporalDuplicateLayer, only specifies the number of duplicates
+message DuplicateParameter {
+	optional uint32 num = 1 [default = 1];
 }
 
 message EltwiseParameter {
