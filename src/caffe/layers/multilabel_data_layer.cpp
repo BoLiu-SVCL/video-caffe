@@ -55,6 +55,8 @@ void MultilabelDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>&
 			video_and_label.label.push_back(label);
 			line = line.substr(pos + 1);
 		}
+		label = float(atof(line.c_str()));
+		video_and_label.label.push_back(label);
     lines_.push_back(video_and_label);
   }
 
@@ -109,7 +111,7 @@ void MultilabelDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>&
       << top[0]->shape(1) << "," << top[0]->shape(2) << ","
       << top[0]->shape(3) << "," << top[0]->shape(4);
   // label
-	int label_size = 59;
+	int label_size = lines_[0].label.size();
   vector<int> label_shape;
 	label_shape.clear();
 	label_shape.push_back(batch_size);
