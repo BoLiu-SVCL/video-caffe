@@ -110,7 +110,12 @@ void MultilabelDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>&
       << top[0]->shape(3) << "," << top[0]->shape(4);
   // label
 	int label_size = lines_[0].label.size();
-  vector<int> label_shape(batch_size, label_size);
+  vector<int> label_shape;
+	label_shape.clear();
+	label_shape.push_back(batch_size);
+	label_shape.push_back(label_size);
+	LOG(INFO) << "label size: " << label_shape[0] << ","
+      << label_shape[1];
   top[1]->Reshape(label_shape);
   for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
     this->prefetch_[i].label_.Reshape(label_shape);
