@@ -15,7 +15,7 @@
 // an extension the std::pair which used to store image filename and
 // its label (int). now, a frame number associated with the video filename
 // is needed (second param) to fully represent a video segment
-struct triplet {
+struct multilet {
   std::string name;
   int frame;
 	std::vector<float> label;
@@ -46,7 +46,7 @@ class MultilabelDataLayer : public BasePrefetchingDataLayer<Dtype> {
   virtual void ShuffleVideos();
   virtual void load_batch(Batch<Dtype>* batch);
 
-  vector<triplet> lines_;
+  vector<multilet> lines_;
   int lines_id_;
 };
 

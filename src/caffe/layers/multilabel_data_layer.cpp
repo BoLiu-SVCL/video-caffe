@@ -42,7 +42,7 @@ void MultilabelDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>&
 	float	label;
 	size_t pos;
   while (std::getline(infile, line)) {
-    triplet video_and_label;
+    multilet video_and_label;
 		pos = line.find(' ');
 		video_and_label.name = line.substr(0, pos);
 		line = line.substr(pos + 1);
