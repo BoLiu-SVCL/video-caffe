@@ -53,4 +53,4 @@ class MultilabelDataLayer : public BasePrefetchingDataLayer<Dtype> {
 
 }  // namespace caffe
 
-#endif  // CAFFE_VIDEO_DATA_LAYER_HPP_
+#endif  // CAFFE_MULTILABEL_DATA_LAYER_HPP_
