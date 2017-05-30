@@ -311,7 +311,7 @@ message ParamSpec {
 //
 // LayerParameter next available layer-specific ID: 147 (last added: recurrent_param)
 // video-caffe custom layers start with 7777
-// Next available video-caffe layer ID: 7781 (last added: roi_pooling_param)
+// Next available video-caffe layer ID: 7782 (last added: video_pooling_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -411,6 +411,7 @@ message LayerParameter {
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
   optional VideoDataParameter video_data_param = 7777;
+	optional VideoPoolingParameter video_pooling_param = 7781;
   optional WindowDataParameter window_data_param = 129;
 }
 
@@ -1214,6 +1215,13 @@ message VideoDataParameter {
   // Specify if the images are color or gray
   optional bool is_color = 12 [default = true];
   optional string root_folder = 13 [default = ""];
+}
+
+message VideoPoolingParameter {
+	optional uint32 pooled_h = 1 [default = 0];
+	optional uint32 pooled_w = 2 [default = 0];
+	optional float spatial_scale = 3 [default = 1];
+	optional float pad_ratio = 4 [default = 0];
 }
 
 message WindowDataParameter {
